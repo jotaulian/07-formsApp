@@ -15,20 +15,24 @@ export class NavbarComponent implements OnInit {
         this.items = [
             {
                 label: 'Auth',
-                routerLink: ['/auth']
+                routerLink: ['/auth/sign-up'],
+                routerLinkActiveOptions: {exact:true}
             },
             {
                 label: 'Basic',
-                routerLink: ['/reactive/basic']
+                routerLink: ['/reactive/basic'],
+                routerLinkActiveOptions: {exact:true}
             },
             {
                 label: 'Dynamic',
-                routerLink: 'reactive/dynamic'
+                routerLink: 'reactive/dynamic',
+                routerLinkActiveOptions: {exact:true}
 
             },
             {
                 label: 'Switches',
-                 routerLink: 'reactive/switches'
+                 routerLink: 'reactive/switches',
+                 routerLinkActiveOptions: {exact:true}
 
             },
 

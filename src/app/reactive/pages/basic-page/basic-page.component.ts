@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 const PRODUCTO = {
-  name: '',
+  name: 'Dyson Vacuum 4Pets',
   price: 135,
   stock:3
 }
@@ -35,7 +35,7 @@ constructor(private fb: FormBuilder){}
     this.myForm.reset(PRODUCTO)
   }
 
-  isValidField(field: 'name' | 'price' | 'stock'):boolean|null{
+  invalidField(field: 'name' | 'price' | 'stock'):boolean|null{
     return this.myForm.controls[field].errors && this.myForm.controls[field].touched;
   }
 

@@ -1,0 +1,4 @@
+::ng-deep .p-menuitem-link-active{
+  background-color: rgba(255, 140, 0, 0.448);
+  border-radius: 5px;
+}

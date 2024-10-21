@@ -12,12 +12,13 @@
         <div class="col flex flex-column">
           <input
             formControlName="name"
+            pInputText
+            [ngClass]="{ 'ng-invalid ng-dirty': invalidField('name') }"
             id="productName"
             type="text"
-            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
             placeholder="Product name"
           />
-          <small *ngIf="isValidField('name')" class="text-red-600 mt-1">
+          <small *ngIf="invalidField('name')" class="text-red-600 mt-1">
             {{ getFieldError("name") }}
           </small>
         </div>
@@ -32,10 +33,11 @@
             formControlName="price"
             id="firstname3"
             type="number"
-            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+            pInputText
+            [ngClass]="{ 'ng-invalid ng-dirty': invalidField('name') }"
             placeholder="Product price"
           />
-          <small *ngIf="isValidField('price')" class="text-red-600 mt-1">
+          <small *ngIf="invalidField('price')" class="text-red-600 mt-1">
             The price must be larger than 0.
           </small>
         </div>
@@ -50,10 +52,11 @@
             formControlName="stock"
             id="firstname3"
             type="number"
-            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+            pInputText
+            [ngClass]="{ 'ng-invalid ng-dirty': invalidField('name') }"
             placeholder="Product stock"
           />
-          <small *ngIf="isValidField('stock')" class="text-red-600 mt-1">
+          <small *ngIf="invalidField('stock')" class="text-red-600 mt-1">
             The stock must be larger than 0.
           </small>
         </div>
