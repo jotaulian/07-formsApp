@@ -1,0 +1,90 @@
+<h2>Reactivos: Básicos</h2>
+<hr />
+
+<div class="grid">
+  <div class="col">
+    <form [formGroup]="myForm" autocomplete="off" (ngSubmit)="onSave()">
+      <!-- Product name -->
+      <div class="field grid">
+        <label for="productName" class="col-fixed" style="width: 100px"
+          >Product</label
+        >
+        <div class="col flex flex-column">
+          <input
+            formControlName="name"
+            id="productName"
+            type="text"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+            placeholder="Product name"
+          />
+          <small *ngIf="isValidField('name')" class="text-red-600 mt-1">
+            {{ getFieldError("name") }}
+          </small>
+        </div>
+      </div>
+      <!-- Price -->
+      <div class="field grid">
+        <label for="lastname3" class="col-fixed" style="width: 100px"
+          >Price</label
+        >
+        <div class="col flex flex-column">
+          <input
+            formControlName="price"
+            id="firstname3"
+            type="number"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+            placeholder="Product price"
+          />
+          <small *ngIf="isValidField('price')" class="text-red-600 mt-1">
+            The price must be larger than 0.
+          </small>
+        </div>
+      </div>
+      <!-- Inventory -->
+      <div class="field grid">
+        <label for="lastname3" class="col-fixed" style="width: 100px"
+          >Stock</label
+        >
+        <div class="col flex flex-column">
+          <input
+            formControlName="stock"
+            id="firstname3"
+            type="number"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+            placeholder="Product stock"
+          />
+          <small *ngIf="isValidField('stock')" class="text-red-600 mt-1">
+            The stock must be larger than 0.
+          </small>
+        </div>
+      </div>
+      <!-- Button -->
+      <div class="flex justify-content-end">
+        <p-button label="Save" type="submit"></p-button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{ myForm.valid | json }}</pre>
+
+    <span>Pristine</span>
+    <pre>{{ myForm.pristine | json }}</pre>
+
+    <span>Touched</span>
+    <pre>{{ myForm.touched | json }}</pre>
+
+    <span>Value</span>
+    <pre>{{ myForm.value | json }}</pre>
+
+    <span>Price - Errors</span>
+    <pre>{{ myForm.controls["price"].errors | json }}</pre>
+
+    <span>Product</span>
+    <pre>{{ myForm.controls["name"].errors | json }}</pre>
+    <pre>{{ myForm.controls["name"].value | json }}</pre>
+  </div>
+</div>
