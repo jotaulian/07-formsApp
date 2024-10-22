@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
+import { InputGroupModule } from 'primeng/inputgroup';
 
 
 
@@ -12,7 +13,8 @@ import { MenubarModule } from 'primeng/menubar';
     FormsModule,
     InputTextModule,
     ButtonModule,
-    MenubarModule
+    MenubarModule,
+    InputGroupModule
   ]
 })
 export class PrimeNgModule { }

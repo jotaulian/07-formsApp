@@ -1,63 +1,78 @@
-<h2>Reactivos: <small> Dinámicos </small></h2>
+<h2>Reactivos: Dinámicos</h2>
 <hr />
 
-<form autocomplete="off">
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" autocomplete="off">
   <!-- Nombre -->
-  <div class="mb-3 row">
-    <label class="col-sm-3 col-form-label">Nombre</label>
-    <div class="col-sm-9">
-      <input class="form-control" placeholder="Nombre de la persona" />
-      <span class="form-text text-danger"> error message </span>
+  <div class="field grid">
+    <label for="personName" class="col-fixed" style="width: 100px">Name</label>
+    <div class="col flex flex-column">
+      <input
+        formControlName="name"
+        pInputText
+        id="personName"
+        type="text"
+        placeholder="Person name"
+        [ngClass]="{ 'ng-invalid ng-dirty': invalidField('name') }"
+      />
+      <small *ngIf="invalidField('name')" class="text-red-600 mt-1">
+        {{ getFieldError("name") }}
+      </small>
     </div>
   </div>
 
   <!-- Agregar Favorito -->
-  <div class="mb-3 row">
-    <label class="col-sm-3 col-form-label">Agregar</label>
-    <div class="col-sm-9">
-      <div class="input-group">
-        <input class="form-control" placeholder="Agregar favorito" />
-
-        <button class="btn btn-outline-primary" type="button">
-          Agregar favorito
-        </button>
+  <div class="field grid">
+    <label for="add-fav" class="col-fixed" style="width: 100px"
+      >Add anime</label
+    >
+    <div class="col flex flex-column">
+      <div class="p-inputgroup" id="add-fav">
+        <input
+          type="text"
+          pInputText
+          placeholder="Anime title"
+          [formControl]="newAnime"
+        />
+        <button type="button" pButton label="Add" (click)="addAnime()"></button>
       </div>
     </div>
   </div>
 
   <!-- Lista de Juegos Favoritos -->
-  <div class="mb-3 row">
-    <label class="col-sm-3 col-form-label">Favoritos</label>
-    <div class="col-sm-9">
-      <div class="mb-1">
-        <div class="input-group">
-          <input class="form-control" />
-
-          <button class="btn btn-outline-danger" type="button">Eliminar</button>
-        </div>
-        <span class="form-text text-danger"> Este campo es requerido </span>
+  <div class="field grid">
+    <label
+      for="delete-fav"
+      class="col-fixed align-self-start"
+      style="width: 100px"
+      >Favourite Animes</label
+    >
+    <div class="col flex flex-column" id="delete-fav">
+      <div
+        formArrayName="favoriteAnimes"
+        *ngFor="let anime of favoriteAnimes.controls; let i = index"
+        class="mb-2"
+      >
+        <p-inputGroup>
+          <input type="text" pInputText [formControlName]="i" />
+          <button
+            pButton
+            type="button"
+            label="Delete"
+            class="p-button-danger"
+            (click)="deleteAnime(i)"
+          ></button>
+        </p-inputGroup>
+        <small
+          *ngIf="invalidFieldInArray(favoriteAnimes, i)"
+          class="text-red-600 mt-1"
+        >
+          Este campo es requerido
+        </small>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-12">
-      <button type="submit" class="btn btn-primary float-end">
-        <!-- [disabled]="myForm.invalid" -->
-        Guardar
-      </button>
-    </div>
+  <div class="flex justify-content-end">
+    <p-button label="Save" type="submit"></p-button>
   </div>
 </form>
-
-<span>Valid</span>
-<pre>{{ "object" | json }}</pre>
-<br />
-
-<span>Value</span>
-<pre>{{ "object" | json }}</pre>
-<br />
-
-<span>Agregar Juego</span>
-<pre>{{ "object" | json }}</pre>
-<pre>{{ "object" | json }}</pre>
