@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidatorsService } from '../../../shared/service/validators.service';
 
 @Component({
   templateUrl: './dynamic-page.component.html',
@@ -17,7 +18,7 @@ export class DynamicPageComponent {
 
   public newAnime: FormControl = this.fb.control('', Validators.required )
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder, private validatorsService: ValidatorsService){}
 
   get favoriteAnimes() {
      return this.myForm.get('favoriteAnimes') as FormArray;
@@ -25,7 +26,7 @@ export class DynamicPageComponent {
 
   // Manejo de errores
     invalidField(field: 'name'):boolean|null{
-    return this.myForm.controls[field].errors && this.myForm.controls[field].touched;
+    return this.validatorsService.isInvalidField(this.myForm, field);
   }
 
     invalidFieldInArray(formArray: FormArray, i:number){

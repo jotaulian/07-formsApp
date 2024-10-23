@@ -5,6 +5,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { InputGroupModule } from 'primeng/inputgroup';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 
@@ -14,7 +17,10 @@ import { InputGroupModule } from 'primeng/inputgroup';
     InputTextModule,
     ButtonModule,
     MenubarModule,
-    InputGroupModule
+    InputGroupModule,
+    RadioButtonModule,
+    InputSwitchModule,
+    CheckboxModule
   ]
 })
 export class PrimeNgModule { }
